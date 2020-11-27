@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace AsyncProject
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             Console.WriteLine("Début du programme");
@@ -16,16 +18,16 @@ namespace AsyncProject
         }
 
 
-        public static void AppelTache1()
+        public static async void AppelTache1()
         {
-            AppelMethode1();
-            Console.WriteLine("  FIN DE LA TACHE 1");
+            await Task.Run(() => AppelMethode1());
+            Console.WriteLine("  FIN DE LA TACHE 1 (6 sec)");
         }
 
-        public static void AppelTache2()
+        public static async void AppelTache2()
         {
-            AppelMethode2();
-            Console.WriteLine("  FIN DE LA TACHE 2");
+            await Task.Run(() => AppelMethode2());
+            Console.WriteLine("  FIN DE LA TACHE 2 (4 sec)");
         }
 
         public static void AppelMethode1()
